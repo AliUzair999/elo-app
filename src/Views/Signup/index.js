@@ -43,7 +43,7 @@ export default function Signup(props) {
             const docRes = await setDoc(doc(db, "users", uid), data)
             console.log(docRes)
 
-            alert("successfully signedup")
+            alert("successfully signed up")
             setData({ Email: "", ProfileImg: [], FirstName: "", LastName: "", Password: "" })
 
             navigate("/login")
@@ -51,6 +51,7 @@ export default function Signup(props) {
 
         catch (err) {
             console.log('Error:', err)
+            alert(err.message)
         }
 
 

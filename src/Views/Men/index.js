@@ -30,6 +30,7 @@ export default function Men() {
     // }
 
     let adNo = 1
+    const [adNumber, setAdNumber] = useState(1)
 
     useEffect(() => {
         async function getMenData() {
@@ -84,22 +85,25 @@ export default function Men() {
 
                     {
                         if (!search) {
-                            return <>
+                            return <div key={ind}>
 
-                                {(adNo > 3)
+                                {/* {(adNumber > 3)
                                     ? <>
+                                    
                                         <div className="clearingDiv"></div>
-                                        {adNo = 1}
+                                        {setAdNumber(1)}
                                     </>
-                                    : adNo = (adNo + 1)
-                                }
+                                    : <>
+                                    {setAdNumber(adNo + 1)}
+                                    </>
+                                } */}
                                 
-                                <div key={ind} className="adView" id={"ad" + (ind + 1)} onClick={() => showAd(val.adId)} >
+                                <div key={ind} className="adView" onClick={() => showAd(val.adId)} style={{cursor:"pointer"}}  >
                                     <div>
-                                        <img className="adImg" src={val.ImagesURl[0]} alt="Product Image" />
+                                        <img className="adImg" src={val.ImagesURl[0]} alt="Product Image" style={{marginBottom:"10px"}}/>
                                     </div>
                                     <div>
-                                        <Typography variant="h6" color='primary' component='p' className="adTitle"> {val.Name} </Typography>
+                                        <Typography variant="h6" color='primary' component='p' className="adTitle" style={{marginBottom:"10px"}} > {val.Name} </Typography>
                                     </div>
                                     <div>
                                         <Typography variant="text1" color='inherit' component='p' className="adPrice" sx={{fontWeight:"bold"}}> PKR. {val.Price}.00 </Typography>
@@ -109,7 +113,7 @@ export default function Men() {
                         
                                     {/* <button onClick={() => dispatch(add(val))}>Add to Favorites</button> */}
                                 </div>
-                            </>
+                            </div>
                         }
 
                         else if (val.title.toLowerCase().includes(search.toLowerCase())) {
