@@ -93,20 +93,18 @@ export default function Women() {
                                     </>
                                     : adNo = (adNo + 1)
                                 }
-                                
-                                <div key={ind} className="adView" id={"ad" + (ind + 1)} onClick={() => showAd(val.adId)} >
-                                    <div>
-                                        <img className="adImg" src={val.ImagesURl[0]} alt="Product Image" />
-                                    </div>
-                                    <div>
-                                        <Typography variant="h6" color='primary' component='p' className="adTitle"> {val.Name} </Typography>
-                                    </div>
-                                    <div>
-                                        <Typography variant="text1" color='inherit' component='p' className="adPrice" sx={{fontWeight:"bold"}}> PKR. {val.Price}.00 </Typography>
-                                    </div>
 
-                            
-                        
+
+
+                                <div key={ind} className="adView" onClick={() => showAd(val.adId)} style={{ cursor: "pointer" }}  >
+
+                                    <img src={val.ImagesURl[0]} alt="Product Image" style={{ width: "100%", height: "100%", margin: "0 auto", marginBottom: "10px" }} />
+
+                                    <Typography variant="h6" color='primary' component='p' sx={{ textTransform: "uppercase" }} > {val.Name} </Typography>
+
+                                    <Typography variant="text1" color='primary' component='p' sx={{ fontWeight: "bold" }}> PKR {val.Price}.00 </Typography>
+
+
                                     {/* <button onClick={() => dispatch(add(val))}>Add to Favorites</button> */}
                                 </div>
                             </>
