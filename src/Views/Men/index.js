@@ -83,49 +83,43 @@ export default function Men() {
 
                 {menTotalAds.map((val, ind) => {
 
-                    {
-                        if (!search) {
-                            return <div key={ind}>
 
-                                {/* {(adNumber > 3)
-                                    ? <>
-                                    
-                                        <div className="clearingDiv"></div>
-                                        {setAdNumber(1)}
-                                    </>
-                                    : <>
-                                    {setAdNumber(adNo + 1)}
-                                    </>
-                                } */}
+                    if (!search) {
 
-                                <div key={ind} className="adView" onClick={() => showAd(val.adId)} style={{ cursor: "pointer" }}  >
+
+                        return <>
+                            {(ind % 3 == 0) && <div className="clearingDiv"></div>}
+                            {/* {console.log((ind + 1) % 3)} */}
+                            <div key={ind} id={ind} className="adView" onClick={() => showAd(val.adId)} style={{ cursor: "pointer" }}  >
 
 
 
-                                    <img src={val.ImagesURl[0]} alt="Product Image" style={{ width: "100%", height: "100%", margin: "0 auto", marginBottom: "10px" }} />
+                                <img src={val.ImagesURl[0]} alt="Product Image" style={{ width: "100%", height: "100%", margin: "0 auto", marginBottom: "10px" }} />
 
-                                    <Typography variant="h6" color='primary' component='p' sx={{ textTransform: "uppercase" }} > {val.Name} </Typography>
-
-
-                                    <Typography variant="text1" color='primary' component='p' sx={{ fontWeight: "bold" }}> PKR {val.Price}.00 </Typography>
+                                <Typography variant="h6" color='primary' component='p' sx={{ textTransform: "uppercase" }} > {val.Name} </Typography>
 
 
-                                    {/* <button onClick={() => dispatch(add(val))}>Add to Favorites</button> */}
-                                </div>
+                                <Typography variant="text1" color='primary' component='p' sx={{ fontWeight: "bold" }}> PKR {val.Price}.00 </Typography>
+
+
+                                {/* <button onClick={() => dispatch(add(val))}>Add to Favorites</button> */}
                             </div>
-                        }
+                        </>
 
-                        else if (val.title.toLowerCase().includes(search.toLowerCase())) {
-                            return <>
-                                <div id={"ad" + (ind + 1)} key={"ad" + (ind + 1)} onClick={() => showAd(val.adId)}>
 
-                                    <p key={"adp" + (ind + 1)} id={"adp" + (ind + 1)}> <img alt={"adi" + (ind + 1)} src={val.imagesURL[0]} width={30} height={30} key={"adi" + (ind + 1)} id={"adi" + (ind + 1)} /> {val.title}
-                                        <br /> price: USD.{val.price}</p>
-
-                                </div>
-                            </>
-                        }
                     }
+
+                    else if (val.title.toLowerCase().includes(search.toLowerCase())) {
+                        return <>
+                            <div id={"ad" + (ind + 1)} key={"ad" + (ind + 1)} onClick={() => showAd(val.adId)}>
+
+                                <p key={"adp" + (ind + 1)} id={"adp" + (ind + 1)}> <img alt={"adi" + (ind + 1)} src={val.imagesURL[0]} width={30} height={30} key={"adi" + (ind + 1)} id={"adi" + (ind + 1)} /> {val.title}
+                                    <br /> price: USD.{val.price}</p>
+
+                            </div>
+                        </>
+                    }
+
 
 
                 })}

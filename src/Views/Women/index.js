@@ -85,17 +85,8 @@ export default function Women() {
                     {
                         if (!search) {
                             return <>
-
-                                {(adNo > 3)
-                                    ? <>
-                                        <div className="clearingDiv"></div>
-                                        {adNo = 1}
-                                    </>
-                                    : adNo = (adNo + 1)
-                                }
-
-
-
+                                {(ind % 3 == 0) && <div className="clearingDiv"></div>}
+                                {/* {console.log((ind + 1) % 3)} */}
                                 <div key={ind} className="adView" onClick={() => showAd(val.adId)} style={{ cursor: "pointer" }}  >
 
                                     <img src={val.ImagesURl[0]} alt="Product Image" style={{ width: "100%", height: "100%", margin: "0 auto", marginBottom: "10px" }} />
@@ -108,6 +99,7 @@ export default function Women() {
                                     {/* <button onClick={() => dispatch(add(val))}>Add to Favorites</button> */}
                                 </div>
                             </>
+
                         }
 
                         else if (val.title.toLowerCase().includes(search.toLowerCase())) {
